@@ -50,11 +50,11 @@ You can try that yourself with the example file `examples/plot.pdf`.
 
 ### Soundtrack
 
-> I keep trying to make something
-> Create something true
-> But I can't replicate you, huh
-> No, I can't replicate you
-> No, I can't replicate you, huh
+> I keep trying to make something  
+> Create something true  
+> But I can't replicate you, huh  
+> No, I can't replicate you  
+> No, I can't replicate you, huh  
 
 
 _Róisín Murphy - Can’t Replicate_
