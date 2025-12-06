@@ -1,0 +1,60 @@
+![plottwist](plottwist.png)
+
+## plottwist
+
+`plottwist` makes plots reproducible from their PDFs.
+
+Perhaps you, like me, find yourself digitizing plots to get the data back from papers. That doesn't feel right, as most plots are digital nowadays anyway.
+
+_What if we just embed the plot data directly into itself?_
+
+`plottwist` transparently saves you Matplotlib actions and then encodes their data and parameters into a fancy link on the plot itself.
+
+### Twisting
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+import plottwist
+
+x = np.linspace(0, 1)
+
+pt = plottwist.PlotTwist(plt.gca())
+pt.plot(x, x**2, label='squared')
+pt.scatter(x, x**3, label='cubed', s=10, marker='x')
+pt.axvline(0.5, color="orange", linestyle='dashed')
+pt.axhline(0.1, color="black", linestyle='dotted')
+pt.legend(frameon=False)
+pt.add_author("Ivan Markin")
+pt.add_reference("https://doi.org/10.1103/6mtx-nftm")
+pt.plot_badge(0.9, 0.1)
+plt.savefig("examples/plot.pdf", bbox_inches='tight')
+```
+
+### Untwisting
+
+Find the `plottwist` badge on the plot PDF, right-click, copy the URL, save it to a file, and reproduce the plot using `plottwist`:
+
+```python
+import matplotlib.pyplot as plt
+import plottwist
+
+pt = plottwist.PlotTwist(plt.gca())
+with open("examples/plot.plottwist") as f:
+    url = f.read()
+pt.reproduce(url)
+plt.show()
+print(pt.data["metadata"])
+```
+
+You can try that yourself with the example file `examples/plot.pdf`.
+
+### Soundtrack
+
+> I keep trying to make something
+> Create something true
+> But I can't replicate you, huh
+> No, I can't replicate you
+> No, I can't replicate you, huh
+
+
+_Róisín Murphy - Can’t Replicate_
