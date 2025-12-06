@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350.08 192.56">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Iosevka-Term-Heavy-Extended-Italic, 'Iosevka Term';
+        font-size: 72px;
+        font-style: italic;
+        font-weight: 800;
+      }
+
+      .cls-2 {
+        fill: #da1c5c;
+      }
+
+      .cls-3 {
+        fill: #f7941d;
+      }
+    </style>
+  </defs>
+  <text class="cls-1" transform="translate(1.08 62.46)"><tspan class="cls-2" x="0" y="0">p</tspan><tspan class="cls-3" x="43.2" y="0">lot</tspan><tspan class="cls-2" x="0" y="86.4" xml:space="preserve">   t</tspan><tspan class="cls-3" x="172.8" y="86.4">wist</tspan></text>
+</svg>
