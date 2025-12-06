@@ -26,13 +26,13 @@ pt.axhline(0.1, color="black", linestyle='dotted')
 pt.legend(frameon=False)
 pt.add_author("Ivan Markin")
 pt.add_reference("https://doi.org/10.1103/6mtx-nftm")
-pt.plot_badge(0.9, 0.1)
+pt.hide_at_the_origin()
 plt.savefig("examples/plot.pdf", bbox_inches='tight')
 ```
 
 ### Untwisting
 
-Find the `plottwist` badge on the plot PDF, right-click, copy the URL, save it to a file, and reproduce the plot using `plottwist`:
+Find the link hidden at the origin of the axes in the plot PDF, right-click, copy the URL, save it to a file, and reproduce the plot using `plottwist`:
 
 ```python
 import matplotlib.pyplot as plt

@@ -5,7 +5,7 @@ import base64
 import msgpack
 import zlib
 
-import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 def encode(data):
     packed_data = zlib.compress(msgpack.packb(data))
@@ -66,8 +66,11 @@ class PlotTwist:
 
     def plot_badge(self, x,y, **kwargs):
         url = encode(self.data)
-        self.ax.text(x,y, "plottwist", ha='center', va="center",
+        self.ax.text(x,y, "plot\ntwist", ha='left', va="center",
                     url=url, transform=self.ax.transAxes, **kwargs)
+
+    def hide_at_the_origin(self):
+        self.plot_badge(-0.02,-0.02, color=(0,0,0,0), fontsize=8)
 
     def reproduce(self, url):
         data = decode(url)
