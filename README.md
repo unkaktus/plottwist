@@ -1,4 +1,4 @@
-![plottwist](plottwist.png)
+![plottwist](doc/plottwist.png)
 
 ## plottwist
 
