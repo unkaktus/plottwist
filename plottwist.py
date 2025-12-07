@@ -7,6 +7,9 @@ import zlib
 
 import matplotlib.patches as patches
 
+from pathlib import Path
+from typing import Union, IO
+
 def encode(data):
     packed_data = zlib.compress(msgpack.packb(data))
     encoded_data = "plottwist:"+base64.b64encode(packed_data).decode("utf-8")
@@ -66,7 +69,7 @@ class PlotTwist:
 
     def plot_badge(self, x,y, **kwargs):
         url = encode(self.data)
-        self.ax.text(x,y, "plot\ntwist", ha='left', va="center",
+        self.ax.text(x,y, "plottwist", ha='left', va="center",
                     url=url, transform=self.ax.transAxes, **kwargs)
 
     def hide_at_the_origin(self):
@@ -88,3 +91,24 @@ class PlotTwist:
                 self.axhline(artist["y"], **artist["kwargs"])
             if artist["func"] == "axvline":
                 self.axvline(artist["x"], **artist["kwargs"])
+
+def read_data(f: Union[str, bytes, Path, IO]):
+    if hasattr(f, "read"):
+        content = f.read()
+        return content.encode() if isinstance(content, str) else content
+
+    if isinstance(f, (str, Path)) and Path(f).exists():
+        return Path(f).read_bytes()
+
+    if isinstance(f, bytes):
+        return f
+
+    if isinstance(f, str):
+        return f.encode("utf-8")
+
+def extract_urls(f: Union[str, bytes, Path, IO]):
+    data = read_data(f)
+    sp = data.split(bytes("#plottwist:", "utf-8"))[1:]
+    sp = [x.split(bytes(")", "utf-8"))[0] for x in sp]
+    urls = [f"plottwist:{x.decode('utf-8')}" for x in sp]
+    return urls
