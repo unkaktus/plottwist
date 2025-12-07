@@ -10,6 +10,12 @@ _What if we just embed the plot data directly into itself?_
 
 `plottwist` transparently saves you Matplotlib actions and then encodes their data and parameters into a fancy link on the plot itself.
 
+### Installation
+
+```python
+pip install plottwist-py
+```
+
 ### Twisting
 ```python
 import matplotlib.pyplot as plt
