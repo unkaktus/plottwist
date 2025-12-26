@@ -43,37 +43,42 @@ class PlotTwist:
         self.data["metadata"]["references"] += [reference]
 
     def plot(self, x, y, **kwargs):
-        self.ax.plot(x,y, **kwargs)
+        ret = self.ax.plot(x,y, **kwargs)
         artist = {"func":"plot", "x": list(x), "y": list(y), "kwargs": kwargs}
         self.data["artists"] += [artist]
+        return ret
 
     def scatter(self, x, y, **kwargs):
-        self.ax.scatter(x,y, **kwargs)
+        ret = self.ax.scatter(x,y, **kwargs)
         artist = {"func":"scatter", "x": list(x), "y": list(y), "kwargs": kwargs}
         self.data["artists"] += [artist]
+        return ret
 
     def axhline(self, y, **kwargs):
-        self.ax.axhline(y, **kwargs)
+        ret = self.ax.axhline(y, **kwargs)
         artist = {"func":"axhline", "y": y, "kwargs": kwargs}
         self.data["artists"] += [artist]
+        return ret
 
     def axvline(self, x, **kwargs):
-        self.ax.axvline(x, **kwargs)
+        ret = self.ax.axvline(x, **kwargs)
         artist = {"func":"axvline", "x": x, "kwargs": kwargs}
         self.data["artists"] += [artist]
+        return ret
 
     def legend(self, **kwargs):
-        self.ax.legend(**kwargs)
+        ret = self.ax.legend(**kwargs)
         artist = {"func":"legend", "kwargs": kwargs}
         self.data["artists"] += [artist]
+        return ret
 
     def plot_badge(self, x,y, **kwargs):
         url = encode(self.data)
-        self.ax.text(x,y, "plottwist", ha='left', va="center",
+        return self.ax.text(x,y, "plottwist", ha='left', va="center",
                     url=url, transform=self.ax.transAxes, **kwargs)
 
     def hide_at_the_origin(self):
-        self.plot_badge(-0.02,-0.02, color=(0,0,0,0), fontsize=8)
+        return self.plot_badge(-0.02,-0.02, color=(0,0,0,0), fontsize=8)
 
     def reproduce(self, url):
         data = decode(url)
