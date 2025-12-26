@@ -1,5 +1,7 @@
 ![plottwist](doc/plottwist.png)
 
+[![DOI](https://zenodo.org/badge/1111141870.svg)](https://doi.org/10.5281/zenodo.18060910)
+
 ## plottwist
 
 `plottwist` makes plots reproducible from their PDFs.
